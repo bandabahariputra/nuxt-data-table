@@ -1,75 +1,61 @@
-# Nuxt Minimal Starter
+# Nuxt Data Table
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A Nuxt 3 application with a powerful DataTable component.
 
-## Setup
+## Tech Stack
 
-Make sure to install dependencies:
+- **Framework:** [Nuxt.js](https://nuxt.com)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com)
+- **UI Components:** [nuxt/ui](https://ui.nuxt.com)
+- **Table package:** [TanStack/vue-table](https://tanstack.com/table/latest)
+- **ORM:** [Prisma ORM](https://prisma.io)
+- **Database:** [Supabase](https://supabase.com)
 
-```bash
-# npm
-npm install
+## Features
 
-# pnpm
-pnpm install
+- [x] Server-side pagination
+- [x] Customizable columns
 
-# yarn
-yarn install
+## Running Locally
 
-# bun
-bun install
-```
+1. Clone the repository
 
-## Development Server
+   ```bash
+   git clone https://github.com/bandabahariputra/nuxt-data-table
+   ```
 
-Start the development server on `http://localhost:3000`:
+2. Install dependencies using pnpm
 
-```bash
-# npm
-npm run dev
+   ```bash
+   pnpm install
+   ```
 
-# pnpm
-pnpm dev
+3. Copy the `.env.example` to `.env` and update the variables.
 
-# yarn
-yarn dev
+   ```bash
+   cp .env.example .env
+   ```
 
-# bun
-bun run dev
-```
+4. (Optional) Run database using docker-compose.yml file
 
-## Production
+   ```bash
+   docker compose up
+   ```
 
-Build the application for production:
+5. Push the database schema
 
-```bash
-# npm
-npm run build
+   ```bash
+   pnpm run db:push
+   ```
 
-# pnpm
-pnpm build
+6. Seed the database
 
-# yarn
-yarn build
+   ```bash
+   pnpm run db:seed
+   ```
 
-# bun
-bun run build
-```
+7. Start the development server
 
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+   ```bash
+   pnpm run dev
+   ```

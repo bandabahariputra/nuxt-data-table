@@ -1,0 +1,22 @@
+services:
+  db-dev:
+    container_name: nuxt-data-table-db-dev
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=nuxt_data_table_db_dev
+    volumes:
+      - nuxt-data-table-db-dev-data:/var/lib/postgresql/data
+    networks:
+      - shared_network
+
+volumes:
+  nuxt-data-table-db-dev-data:
+
+networks:
+  shared_network:
+    external: true
+    driver: bridge
