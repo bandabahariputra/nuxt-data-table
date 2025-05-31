@@ -19,7 +19,10 @@ const cozyCellWidths = Array.from(
 
 <template>
   <div>
-    <div class="flex justify-end py-4">
+    <div
+      class="flex flex-col items-center justify-between gap-4 py-4 md:flex-row"
+    >
+      <USkeleton class="h-7 w-46" />
       <USkeleton class="h-7 w-28" />
     </div>
 
@@ -52,7 +55,9 @@ const cozyCellWidths = Array.from(
       </TableBody>
     </Table>
 
-    <div class="flex justify-between py-4">
+    <div
+      class="flex flex-col items-center justify-between gap-4 py-4 md:flex-row"
+    >
       <div class="flex items-center gap-2">
         <USkeleton class="h-7 w-24" />
         <USkeleton class="h-7 w-16" />

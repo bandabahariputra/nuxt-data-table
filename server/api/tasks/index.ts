@@ -1,11 +1,31 @@
+import type { Prisma } from '@prisma/client';
 import prisma from '~/server/lib/prisma';
 import type { Task, TaskLabel, TaskPriority, TaskStatus } from '~/types/task';
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
 
+  const page = query.page ? Number(query.page) : 1;
   const take = query.perPage ? Number(query.perPage) : 10;
-  const skip = query.page ? (Number(query.page ?? 0) - 1) * take : 0;
+  const skip = (page - 1) * take;
+  const search = query.search ? String(query.search) : '';
+
+  const taskWhereInput: Prisma.TaskWhereInput = {
+    OR: [
+      {
+        code: {
+          contains: search,
+          mode: 'insensitive',
+        },
+      },
+      {
+        title: {
+          contains: search,
+          mode: 'insensitive',
+        },
+      },
+    ],
+  };
 
   const [tasks, total] = await Promise.all([
     prisma.task.findMany({
@@ -16,13 +36,21 @@ export default defineEventHandler(async (event) => {
         status: true,
         priority: true,
       },
-      orderBy: {
-        createdAt: 'desc',
-      },
+      where: search !== '' ? taskWhereInput : undefined,
+      orderBy: [
+        {
+          createdAt: 'desc',
+        },
+        {
+          title: 'asc',
+        },
+      ],
       take,
       skip,
     }),
-    prisma.task.count(),
+    prisma.task.count({
+      where: search !== '' ? taskWhereInput : undefined,
+    }),
   ]);
 
   const data: Task[] = tasks.map((task) => ({
@@ -37,7 +65,7 @@ export default defineEventHandler(async (event) => {
     data: {
       data,
       total,
-      page: skip + 1,
+      page,
       perPage: take,
     },
   };

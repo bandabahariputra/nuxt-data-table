@@ -8,14 +8,17 @@ export class TaskRepository {
   fetchTasks({
     page = 1,
     perPage = 10,
+    search,
   }: {
     page?: number;
     perPage?: number;
+    search?: string;
   }): Promise<ApiResponse<ApiResult<ApiPagination<Task[]>>>> {
     return api.get<ApiResult<ApiPagination<Task[]>>>(
       addQueryParamsToUrl('/api/tasks', {
         page,
         perPage,
+        search,
       }),
     );
   }

@@ -11,21 +11,21 @@ const props = defineProps<{
 
 const pageSizeOptions = props.pageSizeOptions ?? [10, 20, 30, 40, 50];
 
-const page = ref(props.table.getState().pagination.pageIndex + 1);
-const itemsPerPage = ref(props.table.getState().pagination.pageSize);
-
+const page = computed({
+  get: () => props.table.getState().pagination.pageIndex + 1,
+  set: (value) => {
+    props.table.setPageIndex(value - 1);
+  },
+});
+const itemsPerPage = computed({
+  get: () => props.table.getState().pagination.pageSize,
+  set: (value) => {
+    props.table.setPageSize(value);
+  },
+});
 const total = computed(
   () => props.table.getPageCount() * props.table.getState().pagination.pageSize,
 );
-
-watch(page, (value) => {
-  props.table.setPageIndex(value - 1);
-});
-
-watch(itemsPerPage, (value) => {
-  page.value = 1;
-  props.table.setPageSize(value);
-});
 </script>
 
 <template>

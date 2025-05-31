@@ -6,13 +6,16 @@ export class TaskService {
   async getTasks({
     page = 1,
     perPage = 10,
+    search,
   }: {
     page?: number;
     perPage?: number;
+    search?: string;
   }) {
     const response = await this.repository.fetchTasks({
       page,
       perPage,
+      search,
     });
 
     return transformResult(response);

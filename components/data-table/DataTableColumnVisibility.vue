@@ -28,17 +28,15 @@ const columnItems = computed(() => {
 </script>
 
 <template>
-  <div class="flex justify-end py-4">
-    <UDropdownMenu
-      :items="[columnItems]"
-      :content="{ align: 'end' }"
-    >
-      <UButton
-        label="Columns"
-        color="neutral"
-        variant="outline"
-        trailing-icon="i-heroicons-chevron-down-20-solid"
-      />
-    </UDropdownMenu>
-  </div>
+  <UDropdownMenu
+    :items="[columnItems]"
+    :content="{ align: 'end' }"
+  >
+    <UButton
+      label="Columns"
+      color="neutral"
+      variant="outline"
+      trailing-icon="i-heroicons-chevron-down-20-solid"
+    />
+  </UDropdownMenu>
 </template>

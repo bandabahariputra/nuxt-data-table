@@ -26,6 +26,8 @@
     "@prisma/client": "6.8.2",
     "@tailwindcss/vite": "^4.1.7",
     "@tanstack/vue-table": "^8.21.3",
+    "@vueuse/core": "^13.3.0",
+    "@vueuse/nuxt": "^13.3.0",
     "apisauce": "^3.1.1",
     "eslint": "^9.0.0",
     "nanoid": "^5.1.5",
@@ -37,6 +39,7 @@
   },
   "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
   "devDependencies": {
+    "@iconify-json/heroicons": "^1.2.2",
     "@iconify-json/lucide": "^1.2.45",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/node": "^22.15.21",

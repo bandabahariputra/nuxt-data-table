@@ -21,7 +21,16 @@ withDefaults(
 
 <template>
   <div>
-    <DataTableColumnVisibility :table="table" />
+    <div
+      class="flex flex-col items-center justify-between gap-4 py-4 md:flex-row"
+    >
+      <DataTableSearch
+        :table="table"
+        placeholder="Search code or title..."
+      />
+      <DataTableColumnVisibility :table="table" />
+    </div>
+
     <Table>
       <TableHeader :is-loading="options?.isLoading">
         <TableRow
